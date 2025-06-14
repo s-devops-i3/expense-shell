@@ -23,7 +23,10 @@ rm -rf /app
 check_status $?
 
 Print_Headings "Adding expense user"
-useradd expense &>>$LOG
+id expense &>>$LOG
+if [ $? -ne 0 ]; then
+  useradd expense
+fi
 check_status $?
 
 Print_Headings "Creating App dir"
