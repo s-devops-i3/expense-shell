@@ -10,5 +10,25 @@ check_status() {
       echo -e "\e[31mFailure\e[0m"
       exit 1
   fi
+}
+
+App_PreReq(){
+  Print_Headings "Remove old content"
+  rm -rf ${app_dir}
+  check_status $?
+
+
+  Print_Headings "Creating App dir"
+  mkdir ${app_dir}
+  check_status $?
+
+  Print_Headings "Downloading content"
+  curl -o /tmp/${component}.zip https://expense-artifacts.s3.amazonaws.com/expense-${component}-v2.zip &>>$LOG
+  check_status $?
+
+  Print_Headings "Extracting app contents"
+  cd ${app_dir}
+  unzip /tmp/${component}.zip &>>$LOG
+  check_status $?
 
 }
