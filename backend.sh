@@ -3,11 +3,8 @@ source common.sh
 mysql_root_password=$1
 app_dir=/app
 component=backend
-if [ -z "$1" ]; then
-    echo -e "\e[35mPassword Missing\e[0m"
-    exit 2
-fi
 
+input_validation
 Print_Headings "Disable Nodejs"
 dnf module disable nodejs -y &>>$LOG
 check_status $?

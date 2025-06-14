@@ -11,6 +11,13 @@ check_status() {
       exit 1
   fi
 }
+input_validation(){
+if [ -z "$1" ]; then
+    echo -e "\e[35mPassword Missing\e[0m"
+    exit 2
+fi
+}
+
 
 App_PreReq(){
   Print_Headings "Remove old content"
