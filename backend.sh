@@ -2,7 +2,7 @@ mysql_root_password=$1
 
 Print_Headings() {
   echo $1
-  echo "############ $1 ##########" $>>/tmp/expense.log
+  echo "############ $1 ##########" &>>/tmp/expense.log
 }
 Print_Headings "Disable Nodejs"
 dnf module disable nodejs -y &>>/tmp/expense.log
