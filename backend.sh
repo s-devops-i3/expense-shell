@@ -1,3 +1,5 @@
+mysql_root_password=$1
+
 echo "Disable Nodejs"
 dnf module disable nodejs -y &>>/tmp/expense.log
 echo $?
@@ -54,5 +56,6 @@ dnf install mysql -y &>>/tmp/expense.log
 echo $?
 
 echo "Load Schema"
-mysql -h 172.31.27.41 -uroot -pExpenseApp@1 < /app/schema/backend.sql &>>/tmp/expense.log
+mysql -h 172.31.27.41 -uroot -p${mysql_root_password} < /app/schema/backend.sql &>>/tmp/expense.log
 echo $?
+
