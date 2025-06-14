@@ -4,7 +4,7 @@ mysql_root_password=$1
 app_dir=/app
 component=backend
 
-input_validation
+input_validation ${mysql_root_password}
 Print_Headings "Disable Nodejs"
 dnf module disable nodejs -y &>>$LOG
 check_status $?
