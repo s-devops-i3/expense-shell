@@ -1,3 +1,5 @@
+source common.sh
+
 Print_Headings "Install mysql"
 dnf install mysql-server -y &>>/tmp/expense.log
 check_status $?
