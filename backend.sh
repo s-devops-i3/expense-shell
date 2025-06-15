@@ -22,7 +22,6 @@ cp backend.service /etc/systemd/system/backend.service
 check_status $?
 
 Print_Headings "Adding expense user"
-useradd expense
 id expense &>>$LOG
 if [ $? -ne 0 ]; then
   useradd expense
